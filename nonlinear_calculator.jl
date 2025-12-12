@@ -1,12 +1,6 @@
 # nonlinear_calculator.jl
-#
 # Implementation and Evaluation of Nonlinear Equation Solvers by Julia
-#
-# Methods:
-#   - Bisection
-#   - Newton (with numerical derivative if not provided)
-#   - Secant
-#   - Broyden (1D quasi-Newton)
+
 
 
 # Utility: parse function
@@ -21,6 +15,7 @@ end
 function bisection(f, a::Float64, b::Float64; tol=1e-8, maxiter=100)
     fa = f(a)
     fb = f(b)
+    
     if fa * fb > 0
         error("Bisection method requires f(a) * f(b) ≤ 0. Current: f(a) = $fa, f(b) = $fb")
     end
@@ -117,7 +112,7 @@ function secant(f, x0::Float64, x1::Float64; tol=1e-8, maxiter=100)
     return x1, (converged=false, iterations=maxiter, history=history)
 end
 
-# Broyden Method (1D)
+# Broyden Method
 function broyden(f, x0::Float64, x1::Float64; tol=1e-8, maxiter=100)
     history = Float64[]
     f0 = f(x0)
@@ -150,7 +145,8 @@ function broyden(f, x0::Float64, x1::Float64; tol=1e-8, maxiter=100)
         end
 
         # Broyden update for approximate derivative B:
-        # B_{k+1} = B_k + (y - B_k s) / s, where y = f(x_{k+1}) - f(x_k)
+        # B_{k+1} = B_k + (y - B_k s) / s, 
+        # where y = f(x_{k+1}) - f(x_k)
         y = fx_new - fx
         if s != 0
             B = B + (y - B * s) / s
@@ -173,14 +169,11 @@ function prompt_float(msg::String)
 end
 
 function main()
-    println("==============================================")
     println(" Nonlinear Equation Solver Calculator (Julia)")
     println(" Methods: Bisection, Newton, Secant, Broyden")
-    println("==============================================")
     println()
     println("Please input f(x) as a Julia expression, e.g.")
-    println("    x^3 - x - 2")
-    println("    sin(x) - 0.5")
+    println("x^3 - x - 2")
     println()
 
     print("f(x) = ")
@@ -189,10 +182,10 @@ function main()
 
     println()
     println("Choose method")
-    println("  1) Bisection")
-    println("  2) Newton")
-    println("  3) Secant")
-    println("  4) Broyden")
+    println("1) Bisection")
+    println("2) Newton")
+    println("3) Secant")
+    println("4) Broyden")
     print("Your choice = ")
     method = parse(Int, readline())
 
@@ -258,3 +251,4 @@ end
 if abspath(PROGRAM_FILE) == @__FILE__
     main()
 end
+
