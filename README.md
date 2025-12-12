@@ -33,10 +33,7 @@ Methods:
 
 ## 3. How to Run the Project
 
-In the project directory:
-```
-julia nonlinear_calculator.jl
-```
+In the project directory, run the jl code.
 
 Enter this to continue:
 ```
@@ -83,3 +80,4 @@ Number of iterations
 Whether the method converged
 
 ```
+
