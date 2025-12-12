@@ -189,7 +189,7 @@ function main()
     print("Your choice = ")
     method = parse(Int, readline())
 
-    tol = prompt_float("Tolerance (default 1e-8, just press Enter to use default) or input a value: ")
+    tol = prompt_float("Tolerance (example: 1e-8) or input a value: ")
     
     maxiter = Int(prompt_float("Max iterations (e.g. 100): "))
 
@@ -251,4 +251,5 @@ end
 if abspath(PROGRAM_FILE) == @__FILE__
     main()
 end
+
 
