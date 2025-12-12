@@ -38,6 +38,11 @@ In the project directory:
 julia nonlinear_calculator.jl
 ```
 
+Enter this to continue:
+```
+main()
+```
+
 Input the function f(x) as a Julia expression, for example:
 ```
 x^3 - x - 2
@@ -76,4 +81,5 @@ f(root)
 Number of iterations
 
 Whether the method converged
+
 ```
